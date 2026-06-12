@@ -8,74 +8,106 @@ st.set_page_config(
 
 st.title("🩺 FNP Student Success Hub")
 
-st.write("""
-Welcome to the FNP Student Success Hub.
-
-Use this app for:
-- Board review
-- OSCE preparation
-- SOAP note practice
-- Clinical guidelines
-- Practice questions
-""")
-
 page = st.sidebar.selectbox(
-    "Choose a section",
+    "Choose a Section",
     [
         "Home",
-        "Practice Questions",
+        "Board Review",
         "OSCE Practice",
-        "SOAP Notes"
+        "SOAP Note Builder",
+        "Guidelines"
     ]
 )
 
 if page == "Home":
+
     st.header("Welcome")
+
     st.success("Ready to learn!")
 
-elif page == "Practice Questions":
-    st.header("Practice Question")
+    st.write("""
+    This app helps you prepare for:
+    - Exams
+    - OSCEs
+    - Clinical practice
+    - Board certification
+    """)
 
-    answer = st.radio(
-        "Which medication class is first-line for most patients with hypertension?",
+elif page == "Board Review":
+
+    st.header("Board Review Questions")
+
+    question = st.radio(
+        "Which medication class is considered first-line for most patients with uncomplicated hypertension?",
         [
             "Benzodiazepines",
-            "Thiazide diuretics",
+            "Thiazide Diuretics",
             "Antibiotics",
-            "PPIs"
+            "Proton Pump Inhibitors"
         ]
     )
 
     if st.button("Check Answer"):
-        if answer == "Thiazide diuretics":
+
+        if question == "Thiazide Diuretics":
+
             st.success("Correct!")
+
+            st.info("""
+            Rationale:
+
+            Thiazide diuretics are considered one of the recommended
+            first-line treatments for uncomplicated hypertension.
+            """)
+
         else:
-            st.error("Review hypertension guidelines.")
+
+            st.error("Incorrect.")
 
 elif page == "OSCE Practice":
-    st.header("OSCE Scenario")
 
-    st.write(
-        "A 52-year-old patient presents with cough, wheezing, and shortness of breath."
-    )
+    st.header("OSCE Case")
 
-    response = st.text_area(
+    st.write("""
+    A 52-year-old patient presents with cough,
+    wheezing, and shortness of breath.
+    """)
+
+    history = st.text_area(
         "What additional history would you obtain?"
     )
 
-    if st.button("Submit"):
-        st.success("Great clinical thinking!")
+    if st.button("Submit OSCE Response"):
 
-elif page == "SOAP Notes":
+        st.success("Response recorded.")
+
+        st.write("""
+        Consider:
+        - Smoking history
+        - Asthma history
+        - COPD history
+        - Allergies
+        - Trigger exposures
+        - Fever
+        - Medication use
+        """)
+
+elif page == "SOAP Note Builder":
+
     st.header("SOAP Note Builder")
 
     subjective = st.text_area("Subjective")
+
     objective = st.text_area("Objective")
+
     assessment = st.text_area("Assessment")
+
     plan = st.text_area("Plan")
 
-    if st.button("Generate SOAP"):
-        st.write("## SOAP Note")
+    if st.button("Generate SOAP Note"):
+
+        st.subheader("SOAP Note")
+
         st.write("### Subjective")
         st.write(subjective)
 
@@ -87,3 +119,17 @@ elif page == "SOAP Notes":
 
         st.write("### Plan")
         st.write(plan)
+
+elif page == "Guidelines":
+
+    st.header("Clinical Guidelines")
+
+    st.write("ADA - Diabetes")
+
+    st.write("GINA - Asthma")
+
+    st.write("GOLD - COPD")
+
+    st.write("ACC/AHA - Cardiovascular")
+
+    st.write("IDSA - Infectious Disease")
