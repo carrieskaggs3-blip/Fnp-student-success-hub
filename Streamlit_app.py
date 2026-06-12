@@ -16,6 +16,7 @@ page = st.sidebar.selectbox(
     [
         "Home",
         "Announcements",
+        "HTN & Lipid Review",
         "Board Review",
         "OSCE Cases",
         "SOAP Note Builder",
@@ -196,7 +197,67 @@ elif page == "Guideline Center":
     st.write("- USPSTF: Screening and prevention")
 
     st.warning("Always verify current recommendations through official guideline sources.")
+elif page == "HTN & Lipid Review":
 
+    st.header("Hypertension & Hyperlipidemia Review")
+
+    tab1, tab2, tab3 = st.tabs(
+        ["Hypertension", "Hyperlipidemia", "Case Study"]
+    )
+
+    with tab1:
+
+        st.subheader("Hypertension Review")
+
+        st.write("""
+        BP Categories
+
+        - Normal: <120/<80
+        - Elevated: 120-129/<80
+        - Stage 1: 130-139 or 80-89
+        - Stage 2: ≥140 or ≥90
+        """)
+
+        st.write("""
+        Common First-Line Medications
+
+        - Thiazide diuretics
+        - ACE inhibitors
+        - ARBs
+        - Calcium channel blockers
+        """)
+
+    with tab2:
+
+        st.subheader("Hyperlipidemia Review")
+
+        st.write("""
+        Key Concepts
+
+        - ASCVD risk assessment
+        - Statin intensity
+        - Lifestyle modification
+        - Secondary prevention
+        """)
+
+    with tab3:
+
+        st.subheader("Clinical Case")
+
+        st.write("""
+        A 62-year-old patient has:
+
+        - LDL 178
+        - Hypertension
+        - Type 2 diabetes
+        """)
+
+        answer = st.text_area(
+            "What is your assessment and plan?"
+        )
+
+        if st.button("Submit Case"):
+            st.success("Great clinical reasoning practice.")
 elif page == "Student Reflection":
     st.header("Student Reflection")
 
